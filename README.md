@@ -1,15 +1,6 @@
 # datafun-05-sql-project
-“Project 5: Python + SQL integration for Data Analytics Fundamentals”
-![Update Query Result](screenshots/update.png)
-## Project Structure
-- main.py → Python script to run SQL commands
-- sql/schema.sql → Creates tables
-- sql/insert.sql → Adds sample data
-- sql/queries.sql → Example queries
-- screenshots/update.png → Screenshot of working update query
+# Project 5: Python + SQL
 
-## How to Run
-1. Clone repo  
-2. Create virtual environment  
-3. Install requirements  
-4. Run: `python main.py`
+This project demonstrates how to work with relational data using **SQLite** and **Python (sqlite3 + pandas)**.  
+It creates an `authors` table and a `books` table (1-to-many relationship). Then it inserts sample data, runs queries, and updates a record.
+
