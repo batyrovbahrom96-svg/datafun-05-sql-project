@@ -2,7 +2,7 @@
 # Project 5: Python + SQL
 datafun-05-sql-project
 Project 5: Python + SQL
-
+![Update Query Result](screenshots/update.png)
 This project demonstrates how to use Python with SQL to manage relational data.
 It combines sqlite3 for database operations and pandas for querying and displaying results.
 
