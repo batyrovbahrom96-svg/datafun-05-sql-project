@@ -1,30 +1,38 @@
 import sqlite3
 import pandas as pd
 
-# Connect to SQLite database (creates file if not exists)
+# Connect to database
 conn = sqlite3.connect("project.db")
 cursor = conn.cursor()
 
-# Run schema
+# Load schema.sql
 with open("sql/schema.sql") as f:
     cursor.executescript(f.read())
 
-# Run inserts
+# Load insert.sql
 with open("sql/insert.sql") as f:
     cursor.executescript(f.read())
 
-# Query before update
-print("Books before update:")
-df1 = pd.read_sql_query("SELECT * FROM books", conn)
-print(df1)
-
-# Run update query
-cursor.execute("UPDATE books SET title='Emma' WHERE book_id='3'")
 conn.commit()
 
-# Query after update
-print("\nBooks after update:")
-df2 = pd.read_sql_query("SELECT * FROM books", conn)
-print(df2)
+# Show authors
+df_authors = pd.read_sql_query("SELECT * FROM authors", conn)
+print("\nAuthors in DB:")
+print(df_authors)
 
+# Show books before update
+df_books = pd.read_sql_query("SELECT * FROM books", conn)
+print("\nBooks before update:")
+print(df_books)
+
+# Update a book
+cursor.execute("UPDATE books SET title='Emma' WHERE book_id=3")
+conn.commit()
+
+# Show books after update
+df_books_after = pd.read_sql_query("SELECT * FROM books", conn)
+print("\nBooks after update:")
+print(df_books_after)
+
+# ✅ Close AFTER everything
 conn.close()
